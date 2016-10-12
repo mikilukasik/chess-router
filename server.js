@@ -26,7 +26,7 @@ app.get('/api/app.apk', function(req, res) {
 
   var options = {
     // host to forward to
-    host:   '0.0.0.0',
+    host:   'http://localhost',
     // port to forward to
     port:   5000,
     // path to forward to
