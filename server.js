@@ -1,5 +1,12 @@
 var express = require("express")
 var http = require('http');
+var network = require('network');
+
+var gatewayIp
+network.get_gateway_ip(function(err, ip) {
+  gatewayIp = ip
+  console.log('gateway ip: ', err || ip); // err may be 'No active network interface found.' 
+})
 
 // var redirect = require("express-redirect");
  
@@ -26,7 +33,7 @@ app.get('/api/app.apk', function(req, res) {
 
   var options = {
     // host to forward to
-    host:   'http://localhost',
+    host:   gatewayIp,
     // port to forward to
     port:   5000,
     // path to forward to
