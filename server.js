@@ -2,6 +2,18 @@ var express = require("express")
 var http = require('http');
 var network = require('network');
 
+var publicIp
+network.get_public_ip(function(err, ip) {
+  publicIp = ip
+  console.log('public ip: ', err || ip); // err may be 'No active network interface found.' 
+})
+
+var privateIp
+network.get_private_ip(function(err, ip) {
+  privateIp = ip
+  console.log('private ip: ', err || ip); // err may be 'No active network interface found.' 
+})
+
 var gatewayIp
 network.get_gateway_ip(function(err, ip) {
   gatewayIp = ip
@@ -33,7 +45,7 @@ app.get('/api/app.apk', function(req, res) {
 
   var options = {
     // host to forward to
-    host:   gatewayIp,
+    host:   publicIp,
     // port to forward to
     port:   5000,
     // path to forward to

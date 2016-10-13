@@ -8,7 +8,7 @@ RUN cd /src; npm install
 COPY . /src
 
 EXPOSE  3030
-EXPOSE  5000
+# EXPOSE  5000
 
 # RUN cd /src; npm start
 CMD cd /src; npm start
